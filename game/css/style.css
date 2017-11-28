@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee');
+
+.game-wrapper {
+  background-image: url(../img/pattern.svg);
+  background-repeat: repeat;
+
+  height: 100vh;
+  width: 100%;
+  background-size: 100px;
+}
