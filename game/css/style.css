@@ -20,20 +20,45 @@ body {
   background-size: 100px;
 }
 .information-wrapper {
-  margin: 0 30px;
+  margin: 0 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 /* Textos */
 
 h1 {
+  width: calc(100% - 300px);
   font-size: 4rem;
   text-transform: uppercase;
   text-align: center;
   color: #ffbb2a;
   text-shadow: -1px 0 1px #582E00, 1px 0 1px #582E00, 0 -1px 1px #582E00, 0 4px 1px #582E00, -2px 4px 1px #582E00, 2px 3px 2px #582E00;
 }
+h2, h3, .player-score, .remaining-followers {
+  text-align: center;
+  color: #ffffff;
+  text-shadow: -1px 0 1px #582E00, 1px 0 1px #582E00, 0 -1px 1px #582E00, 0 4px 1px #582E00, -2px 4px 1px #582E00, 2px 3px 2px #582E00;
+}
+h2 {
+  font-size: 3rem;
+}
+h3 {
+  font-size: 2rem;
+}
+.player-score {
+  text-align: center;
+  font-size: 4rem;
+  color: #ffffff;
+}
+.remaining-followers {
+  text-align: center;
+  font-size: 1.25rem;
+  color: #ffffff;
+}
 
-/* Tablero */
+/* Board */
 
 .board {
   width: 612px;
@@ -42,4 +67,40 @@ h1 {
   background: #dedede;
   background-image: url(../img/board-background.png);
   box-shadow: -1px 0 1px #582E00, 1px 0 1px #582E00, 0 -1px 1px #582E00, 0 4px 1px #582E00, -2px 4px 1px #582E00, 2px 3px 2px #582E00;
+}
+
+/* Score */
+
+.score {
+  height: 100vh;
+  background-image: url(../img/pattern-score.svg);
+  background-repeat: repeat;
+  background-size: 100px;
+  background: #e85756;
+  -webkit-box-shadow: -5px 0px 14px -7px rgba(255,187,42,1);
+  -moz-box-shadow: -5px 0px 14px -7px rgba(255,187,42,1);
+  box-shadow: -5px 0px 14px -7px rgba(255,187,42,1);
+  width: 300px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  padding: 20px 20px 40px;
+}
+.players-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100% - 100px);
+  align-items: center;
+}
+.score-title {
+  display: flex;
+  height: 100px;
+  align-items: center;
+  justify-content: center;
+}
+.card {
+  height: 150px;
+  width: 150px;
+  background: green;
 }
