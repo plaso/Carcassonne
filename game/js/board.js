@@ -21,9 +21,16 @@ Board.prototype.createCells = function() {
   }
 };
 
+Board.prototype.initialCell = function() {
+  $(".row-card:nth-child(6) .card-cell:nth-child(6)").addClass("initial");
+};
+
 Board.prototype.acceptCard = function() {
-  $( ".card-cell" ).droppable({
+  $( ".initial" ).droppable({
   accept: ".card",
-  activeClass: "cell-highlighted"
+  activeClass: "cell-highlighted",
+  drop: function( event, ui) {
+    alert("dropped");
+  }
   });
 };

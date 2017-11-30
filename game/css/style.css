@@ -83,8 +83,14 @@ h3 {
   border: 1px solid #ffffff;
   background: red;
 }
+.initial {
+  background: yellow !important;
+}
 .cell-highlighted {
   background: blue !important;
+}
+.drop-hover {
+  background: orange !important;
 }
 
 /* Score */

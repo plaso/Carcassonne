@@ -6,6 +6,8 @@ Card.prototype.drag = function() {
   $(".score .card").draggable({
     snap: true,
     snapMode: "inner",
+    revert: "invalid",
+    revertDuration: 600,
   });
 };
 
