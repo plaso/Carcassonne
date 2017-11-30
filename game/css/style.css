@@ -16,6 +16,7 @@ body {
   background-repeat: repeat;
 
   height: 100%;
+  width: 100%;
   background-size: 100px;
 }
 .information-wrapper {
@@ -28,7 +29,11 @@ body {
 /* Textos */
 
 h1 {
-  width: calc(100% - 300px);
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(calc(-50% - 150px));
   font-size: 4rem;
   text-transform: uppercase;
   text-align: center;
@@ -60,6 +65,7 @@ h3 {
 /* Board */
 
 #board {
+  margin-top: 120px;
   width: 6012px;
   border: 6px solid #74480d;
   height: 6012px;
