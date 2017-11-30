@@ -31,6 +31,7 @@ Board.prototype.acceptCard = function() {
   activeClass: "cell-highlighted",
   drop: function( event, ui) {
     alert("dropped");
+    $(ui.draggable).addClass("blocked");
   }
   });
 };

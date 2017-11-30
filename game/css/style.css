@@ -92,6 +92,9 @@ h3 {
 .drop-hover {
   background: orange !important;
 }
+.blocked {
+  pointer-events: none;
+}
 
 /* Score */
 
