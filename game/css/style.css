@@ -76,6 +76,16 @@ h3 {
 .row-card {
   display: flex;
 }
+.card-cell {
+  height: 100px;
+  width: 100px;
+  flex-basis: 100px;
+  border: 1px solid #ffffff;
+  background: red;
+}
+.cell-highlighted {
+  background: blue !important;
+}
 
 /* Score */
 

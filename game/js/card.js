@@ -3,7 +3,10 @@ function Card(type) {
 }
 
 Card.prototype.drag = function() {
-  $(".card").draggable();
+  $(".score .card").draggable({
+    snap: true,
+    snapMode: "inner",
+  });
 };
 
 Card.prototype.rotate = function() {
