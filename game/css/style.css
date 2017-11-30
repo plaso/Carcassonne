@@ -15,8 +15,7 @@ body {
   background-image: url(../img/pattern.svg);
   background-repeat: repeat;
 
-  height: 100vh;
-  width: 100%;
+  height: 100%;
   background-size: 100px;
 }
 .information-wrapper {
@@ -60,13 +59,16 @@ h3 {
 
 /* Board */
 
-.board {
-  width: 612px;
+#board {
+  width: 6012px;
   border: 6px solid #74480d;
-  height: 612px;
+  height: 6012px;
   background: #dedede;
   background-image: url(../img/board-background.png);
   box-shadow: -1px 0 1px #582E00, 1px 0 1px #582E00, 0 -1px 1px #582E00, 0 4px 1px #582E00, -2px 4px 1px #582E00, 2px 3px 2px #582E00;
+}
+.row-card {
+  display: flex;
 }
 
 /* Score */
@@ -100,7 +102,9 @@ h3 {
   justify-content: center;
 }
 .card {
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
+  flex-basis: 100px;
   background: green;
+  border: 1px solid #ffffff;
 }
