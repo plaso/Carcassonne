@@ -8,6 +8,7 @@ Card.prototype.drag = function() {
     snapMode: "inner",
     revert: "invalid",
     revertDuration: 600,
+    helper: "clone",
   });
 };
 
