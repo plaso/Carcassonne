@@ -5,7 +5,5 @@ $( document ).ready(function() {
   board.createCells();
   board.initialCell();
   board.acceptCard();
-  board.createDroppables();
-  board.acceptCard();
   card.drag();
 });
