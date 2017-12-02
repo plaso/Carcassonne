@@ -1,7 +1,7 @@
 function Board() {
   this.cellsArray = [];
-  this.cellsColumns = 60;
-  this.cellsRows = 60;
+  this.cellsColumns = 30;
+  this.cellsRows = 30;
 }
 
 Board.prototype.createCells = function() {

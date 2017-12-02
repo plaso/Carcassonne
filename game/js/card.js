@@ -4,7 +4,7 @@ function Card(type) {
 
 Card.prototype.drag = function() {
   $(".score .card").draggable({
-    snap: true,
+    snap: ".initial",
     snapMode: "inner",
     revert: "invalid",
     revertDuration: 600,
