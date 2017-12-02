@@ -86,7 +86,3 @@ Card.prototype.drag = function() {
     helper: "clone",
   });
 };
-
-Card.prototype.rotate = function() {
-
-};

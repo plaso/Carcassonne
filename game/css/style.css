@@ -149,3 +149,123 @@ h3 {
 .card .front {
   display: none;
 }
+
+
+
+
+
+
+/*Botones*/
+
+
+.capa1 {
+	position: relative;
+	-webkit-border-radius: 11px;
+	-moz-border-radius: 11px;
+	border-radius: 11px;
+	width:300px;
+	height:100px;
+	background:black;
+	-webkit-box-shadow: 0px 11px 2px #301C09;
+  -moz-box-shadow: 0px 11px 2px #301C09;
+  box-shadow: 0px 11px 2px #301C09;
+  cursor:pointer;
+  margin : 80px auto;
+  transform: scale(0.5);
+}
+
+.capa2 {
+	position:absolute;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	width:294px;
+	height:94px;
+	margin-top:3px;
+	margin-left:3px;
+	background:#FDA80D;
+	-webkit-box-shadow: 0px 9px 0px #AF6B06;
+  -moz-box-shadow: 0px 9px 0px #AF6B06;
+  box-shadow: 0px 9px 0px #AF6B06;
+}
+
+.capa23{
+	position:absolute;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	width:292px;
+	height:80px;
+	margin-top:5px;
+	margin-left:1px;
+    -webkit-box-shadow: 0px -4px 5px 0px #FFDC33;
+    -moz-box-shadow:    0px -4px 5px 0px #FFDC33;
+	box-shadow:         0px -4px 5px 0px #FFDC33;
+
+
+}
+
+.capa3{
+	position:absolute;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-top:0px;
+	margin-left:5px;
+	width:281px;
+	height:82px;
+	background:rgba(255,187,42,1);
+	-webkit-box-shadow: 0px 4px 3px 0px #FE8906;
+	-moz-box-shadow:    0px 4px 3px 0px #FE8906;
+	box-shadow:         0px 4px 3px 0px #FE8906;
+}
+
+.capa4{
+	position:absolute;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	margin-top:5px;
+	margin-left:3px;
+	width:275px;
+	height:38px;
+	background:#FFD053;
+}
+
+.capa5{
+	position:absolute;
+	-webkit-border-radius: 45%;
+	-moz-border-radius: 45%;
+	border-radius: 45%;
+	margin-top:0px;
+	margin-left:267px;
+	width:7px;
+	height:9px;
+	background:#FFF1B6;
+}
+
+.text{
+	position:absolute;
+	font-family: "bungee",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+	color:#FFFFCC;
+	font-size:1.7em;
+	margin-top:2px;
+	margin-left:85px;
+	text-shadow: -1px 0 1px #582E00,
+             	1px 0 1px #582E00,
+             	0 -1px 1px #582E00,
+             	0 4px 1px #582E00,
+             	-2px 4px 1px #582E00,
+             	2px 3px 2px #582E00;
+}
+
+.rotate-btn {
+  left: -180px;
+}
+
+.accept-btn {
+  top: -180px;
+  left: -20px;
+}
