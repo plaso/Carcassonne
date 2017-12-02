@@ -126,9 +126,26 @@ h3 {
   align-items: center;
   justify-content: center;
 }
+.deck {
+  position: relative;
+  width: 98px;
+  height: 98px;
+}
+
+.card, .back, .front{
+  height: 98px;
+  width: 98px;
+}
+
 .card {
-  height: 100px;
-  width: 100px;
   flex-basis: 100px;
+  position: absolute;
+}
+
+.card .back {
   background: green;
+}
+
+.card .front {
+  display: none;
 }
