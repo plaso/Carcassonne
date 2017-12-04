@@ -1,35 +1,37 @@
+//0: verde - 1: castillo - 2: camino
+
 function Card() {
   this.deck = [
-    { name: "opposite-castles",     img: "castle-green-castle-green.svg" },
-    { name: "opposite-castles",     img: "castle-green-castle-green.svg" },
-    { name: "opposite-castles",     img: "castle-green-castle-green.svg" },
-    { name: "castle",               img: "castle-green-green-green.svg" },
-    { name: "castle",               img: "castle-green-green-green.svg" },
-    { name: "castle",               img: "castle-green-green-green.svg" },
-    { name: "castle",               img: "castle-green-green-green.svg" },
-    { name: "castle",               img: "castle-green-green-green.svg" },
-    { name: "cross",                img: "green-road-road-road-cross.svg" },
-    { name: "cross",                img: "green-road-road-road-cross.svg" },
-    { name: "cross",                img: "green-road-road-road-cross.svg" },
-    { name: "cross",                img: "green-road-road-road-cross.svg" },
-    { name: "cross",                img: "green-road-road-road-cross.svg" },
-    { name: "double-castle",        img: "castle-castle-green-green.svg" },
-    { name: "double-castle",        img: "castle-castle-green-green.svg" },
-    { name: "double-castle",        img: "castle-castle-green-green.svg" },
-    { name: "castle-road",          img: "castle-road-green-road.svg" },
-    { name: "castle-road",          img: "castle-road-green-road.svg" },
-    { name: "castle-road",          img: "castle-road-green-road.svg" },
-    { name: "castle-road",          img: "castle-road-green-road.svg" },
-    { name: "curve",                img: "green-green-road-road.svg" },
-    { name: "curve",                img: "green-green-road-road.svg" },
-    { name: "curve",                img: "green-green-road-road.svg" },
-    { name: "curve",                img: "green-green-road-road.svg" },
-    { name: "curve",                img: "green-green-road-road.svg" },
-    { name: "road",                 img: "green-road-green-road.svg" },
-    { name: "road",                 img: "green-road-green-road.svg" },
-    { name: "road",                 img: "green-road-green-road.svg" },
-    { name: "road",                 img: "green-road-green-road.svg" },
-    { name: "road",                 img: "green-road-green-road.svg" },
+    { name: "opposite-castles",     img: "castle-green-castle-green.svg", top: "castle", right: "green", bottom: "castle", left: "green" },
+    { name: "opposite-castles",     img: "castle-green-castle-green.svg", top: "castle", right: "green", bottom: "castle", left: "green" },
+    { name: "opposite-castles",     img: "castle-green-castle-green.svg", top: "castle", right: "green", bottom: "castle", left: "green" },
+    { name: "castle",               img: "castle-green-green-green.svg",  top: "castle", right: "green", bottom: "green",  left: "green" },
+    { name: "castle",               img: "castle-green-green-green.svg",  top: "castle", right: "green", bottom: "green",  left: "green" },
+    { name: "castle",               img: "castle-green-green-green.svg",  top: "castle", right: "green", bottom: "green",  left: "green" },
+    { name: "castle",               img: "castle-green-green-green.svg",  top: "castle", right: "green", bottom: "green",  left: "green" },
+    { name: "castle",               img: "castle-green-green-green.svg",  top: "castle", right: "green", bottom: "green",  left: "green" },
+    { name: "cross",                img: "green-road-road-road-cross.svg", top: "green", right: "road",  bottom: "road",   left: "road"  },
+    { name: "cross",                img: "green-road-road-road-cross.svg", top: "green", right: "road",  bottom: "road",   left: "road"  },
+    { name: "cross",                img: "green-road-road-road-cross.svg", top: "green", right: "road",  bottom: "road",   left: "road"  },
+    { name: "cross",                img: "green-road-road-road-cross.svg", top: "green", right: "road",  bottom: "road",   left: "road"  },
+    { name: "cross",                img: "green-road-road-road-cross.svg", top: "green", right: "road",  bottom: "road",   left: "road"  },
+    { name: "double-castle",        img: "castle-castle-green-green.svg", top: "castle", right:"castle", bottom: "green",  left: "green" },
+    { name: "double-castle",        img: "castle-castle-green-green.svg", top: "castle", right:"castle", bottom: "green",  left: "green" },
+    { name: "double-castle",        img: "castle-castle-green-green.svg", top: "castle", right:"castle", bottom: "green",  left: "green" },
+    { name: "castle-road",          img: "castle-road-green-road.svg",    top: "castle", right: "road",  bottom: "green",  left: "road"  },
+    { name: "castle-road",          img: "castle-road-green-road.svg",    top: "castle", right: "road",  bottom: "green",  left: "road"  },
+    { name: "castle-road",          img: "castle-road-green-road.svg",    top: "castle", right: "road",  bottom: "green",  left: "road"  },
+    { name: "castle-road",          img: "castle-road-green-road.svg",    top: "castle", right: "road",  bottom: "green",  left: "road"  },
+    { name: "curve",                img: "green-green-road-road.svg",     top: "green",  right: "green", bottom: "road",   left: "road"  },
+    { name: "curve",                img: "green-green-road-road.svg",     top: "green",  right: "green", bottom: "road",   left: "road"  },
+    { name: "curve",                img: "green-green-road-road.svg",     top: "green",  right: "green", bottom: "road",   left: "road"  },
+    { name: "curve",                img: "green-green-road-road.svg",     top: "green",  right: "green", bottom: "road",   left: "road"  },
+    { name: "curve",                img: "green-green-road-road.svg",     top: "green",  right: "green", bottom: "road",   left: "road"  },
+    { name: "road",                 img: "green-road-green-road.svg",     top: "green",  right: "road",  bottom: "green",  left: "road"  },
+    { name: "road",                 img: "green-road-green-road.svg",     top: "green",  right: "road",  bottom: "green",  left: "road"  },
+    { name: "road",                 img: "green-road-green-road.svg",     top: "green",  right: "road",  bottom: "green",  left: "road"  },
+    { name: "road",                 img: "green-road-green-road.svg",     top: "green",  right: "road",  bottom: "green",  left: "road"  },
+    { name: "road",                 img: "green-road-green-road.svg",     top: "green",  right: "road",  bottom: "green",  left: "road"  },
   ];
 }
 
@@ -56,7 +58,7 @@ Card.prototype.createDeck = function() {
 
   this.deck.forEach(function(pic, index) {
 
-    html += '<div class= "card" name="card_' + pic.name + '">';
+    html += '<div class= "card" name="card_' + pic.name + '" data-top="' + pic.top +'" data-right="' + pic.right +'" data-bottom="' + pic.bottom +'" data-left="' + pic.left + '">';
       html += '<div class="back"';
       html += '    name="' + pic.name + '">';
       html += '</div>';

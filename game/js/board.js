@@ -16,12 +16,28 @@ Board.prototype.createCells = function() {
 };
 
 Board.prototype.initialCell = function() {
-  $(".row-card:nth-child(6) .card-cell:nth-child(6)").addClass("initial droppable");
+  $(".row-card:nth-child(15) .card-cell:nth-child(15)").addClass("initial droppable");
+};
+
+Board.prototype.validationCard = function() {
+  var Boardthis = this;
+
+  $('.rotate-btn').click(function() {
+    var angle = ($(this).prev().data('angle') + 90) || 90;
+    $(this).prev().css({'transform': 'rotate(' + angle + 'deg)'});
+    $(this).prev().data('angle', angle);
+  });
+  $('.accept-btn').click(function() {
+    Boardthis.createDroppables();
+    $('.context-btn').remove();
+  });
 };
 
 Board.prototype.acceptCard = function() {
-  var rotateBtn = '<div class="capa1 rotate-btn"><div class="capa2"><div class="capa23"><div class="capa3"><div class="capa4"><span class="text rotate">Rotate</span><div class="capa5"></div></div></div></div></div></div>';
-  var acceptBtn = '<div class="capa1 accept-btn"><div class="capa2"><div class="capa23"><div class="capa3"><div class="capa4"><span class="text rotate">Accept</span><div class="capa5"></div></div></div></div></div></div>';
+  var rotateBtn = '<div class="capa1 context-btn rotate-btn"><div class="capa2"><div class="capa23"><div class="capa3"><div class="capa4"><span class="text rotate">Rotate</span><div class="capa5"></div></div></div></div></div></div>';
+  var acceptBtn = '<div class="capa1 context-btn accept-btn"><div class="capa2"><div class="capa23"><div class="capa3"><div class="capa4"><span class="text rotate">Accept</span><div class="capa5"></div></div></div></div></div></div>';
+
+  var boardThis = this;
 
   $( ".droppable" ).droppable({
   accept: ".card",
@@ -30,29 +46,27 @@ Board.prototype.acceptCard = function() {
     $(ui.draggable).addClass("blocked");
     $(ui.draggable).detach().appendTo($(this));
     $(this).append(rotateBtn).append(acceptBtn);
-    $('.rotate-btn').click(function() {
-      var angle = ($(this).prev().data('angle') + 90) || 90;
-      $(this).prev().css({'transform': 'rotate(' + angle + 'deg)'});
-      $(this).prev().data('angle', angle);
-    });
+    boardThis.validationCard();
   }
   });
 };
 
 Board.prototype.createDroppables = function() {
-  var parentOfCell = $(".ui-droppable").parent();
-  var indexPrincipalCell = $(".ui-droppable").index();
+  var currentCell = $('.accept-btn').parent();
 
-  var previousParent = $(".ui-droppable").parent().prev();
-  var nextParent = $(".ui-droppable").parent().next();
+  var parentOfCell = currentCell.parent();
+  var indexPrincipalCell = currentCell.index();
+
+  var previousParent = currentCell.parent().prev();
+  var nextParent = currentCell.parent().next();
 
   var cellSelector = ".card-cell:nth-child(" + (indexPrincipalCell + 1) + ")";
 
   previousParent.children( cellSelector ).addClass("initial droppable");
   nextParent.children( cellSelector ).addClass("initial droppable");
 
-  $( ".ui-droppable" ).prev().addClass("initial droppable");
-  $( ".ui-droppable" ).next().addClass("initial droppable");
+  currentCell.prev().addClass("initial droppable");
+  currentCell.next().addClass("initial droppable");
 
   this.acceptCard();
 };
