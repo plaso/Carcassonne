@@ -7,12 +7,15 @@ function Board() {
 Board.prototype.createCells = function() {
 
   for (var i = 0; i < this.cellsRows; i++) {
-    $("#board").append("<div class='row-card'></div>");
+    $("#board").append("<div class='row-card" + i + " row-card'></div>");
+
+    for (var j = 0; j < this.cellsColumns; j++) {
+      $(".row-card" + i + "").append("<div id=" + i + "." + j + " class='card-cell'></div>");
+    }
+
   }
 
-  for (var j = 0; j < this.cellsColumns; j++) {
-    $(".row-card").append("<div id=" + i + "." + j + " class='card-cell'></div>");
-  }
+
 };
 
 Board.prototype.initialCell = function() {
