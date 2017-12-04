@@ -88,3 +88,20 @@ Card.prototype.drag = function() {
     helper: "clone",
   });
 };
+
+Card.prototype.rotateData = function(card) {
+  var temporalString = "";
+  var temporalStringTwo = "";
+
+  this.deck.forEach(function(pic, index) {
+    temporalString = pic.left;
+    pic.left = pic.bottom;
+    temporalStringTwo = pic.top;
+    pic.top = temporalString;
+    temporalString = pic.right;
+    pic.right = temporalStringTwo;
+    pic.bottom = temporalString;
+
+    return pic.left;
+  });
+};

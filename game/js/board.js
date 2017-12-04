@@ -11,7 +11,7 @@ Board.prototype.createCells = function() {
   }
 
   for (var j = 0; j < this.cellsColumns; j++) {
-    $(".row-card").append("<div class='card-cell'></div>");
+    $(".row-card").append("<div id=" + i + "." + j + " class='card-cell'></div>");
   }
 };
 
@@ -20,17 +20,37 @@ Board.prototype.initialCell = function() {
 };
 
 Board.prototype.validationCard = function() {
-  var Boardthis = this;
+  var that = this;
 
   $('.rotate-btn').click(function() {
     var angle = ($(this).prev().data('angle') + 90) || 90;
+    that.rotateCardData($(this).prev());
     $(this).prev().css({'transform': 'rotate(' + angle + 'deg)'});
     $(this).prev().data('angle', angle);
   });
   $('.accept-btn').click(function() {
-    Boardthis.createDroppables();
+    that.createDroppables();
     $('.context-btn').remove();
   });
+};
+
+Board.prototype.rotateCardData = function(card) {
+
+  var actualTop = card.attr("data-top");
+  var actualRight = card.attr("data-right");
+  var actualBottom = card.attr("data-bottom");
+  var actualLeft = card.attr("data-left");
+
+  card.attr("data-top", actualLeft);
+  card.attr("data-right", actualTop);
+  card.attr("data-bottom", actualRight);
+  card.attr("data-left", actualBottom);
+};
+
+Board.prototype.validatePosition = function(card) {
+  if ($(card).attr("data-left") != $(card).prev().attr("data-right")) {
+    alert("different");
+  }
 };
 
 Board.prototype.acceptCard = function() {
