@@ -7,15 +7,12 @@ function Board() {
 Board.prototype.createCells = function() {
 
   for (var i = 0; i < this.cellsRows; i++) {
-    $("#board").append("<div class='row-card" + i + " row-card'></div>");
+    $("#board").append("<div class='row-card" + (i + 1) + " row-card'></div>");
 
     for (var j = 0; j < this.cellsColumns; j++) {
-      $(".row-card" + i + "").append("<div id=" + i + "." + j + " class='card-cell'></div>");
+      $(".row-card" + (i + 1) + "").append("<div id=" + (i + 1) + "-" + (j + 1) + " class='card-cell'></div>");
     }
-
   }
-
-
 };
 
 Board.prototype.initialCell = function() {
@@ -32,9 +29,63 @@ Board.prototype.validationCard = function() {
     $(this).prev().data('angle', angle);
   });
   $('.accept-btn').click(function() {
-    that.createDroppables();
-    $('.context-btn').remove();
+    var incorrectPositions = that.checkPosition($(this));
+    if (incorrectPositions === 0) {
+      that.createDroppables();
+      $('.context-btn').remove();
+    } else {
+      $(this).siblings(".card").detach().prependTo($("#deck"));
+      $('.context-btn').remove();
+    }
+    console.log(incorrectPositions);
   });
+};
+
+Board.prototype.checkPosition = function(button) {
+  var focusCard = button.siblings(".card");
+  var arrayIdParent =  button.parent().get(0).id.split("-");
+  var rowPosition = arrayIdParent[0];
+  var columnPosition = arrayIdParent[1];
+
+  var topElement = $("#" + (rowPosition - 1) + "-" + columnPosition);
+  var rightElement = $("#" + rowPosition + "-" + (columnPosition + 1));
+  var bottomElement = $("#" + (rowPosition + 1) + "-" + columnPosition);
+  var leftElement = $("#" + rowPosition + "-" + (columnPosition - 1));
+
+  var topElementData = topElement.children(".card").attr("data-bottom");
+  var rightElementData = rightElement.children(".card").attr("data-left");
+  var bottomElementData = bottomElement.children(".card").attr("data-top");
+  var leftElementData = leftElement.children(".card").attr("data-right");
+
+  var cardDataTop = focusCard.attr("data-top");
+  var cardDataRight = focusCard.attr("data-right");
+  var cardDataBottom = focusCard.attr("data-bottom");
+  var cardDataLeft = focusCard.attr("data-left");
+
+  var incorrectPositions = 0;
+
+  if (topElement.children().length != 0) {
+    if (cardDataTop != topElementData) {
+      incorrectPositions++;
+    }
+  }
+  if (rightElement.children().length != 0) {
+    if (cardDataRight != rightElementData) {
+      incorrectPositions++;
+    }
+  }
+  if (bottomElement.children().length != 0) {
+    if (cardDataBottom != bottomElementData) {
+      incorrectPositions++;
+    }
+  }
+  if (leftElement.children().length != 0) {
+    if (cardDataLeft != leftElementData) {
+      incorrectPositions++;
+    }
+  }
+
+  return incorrectPositions;
 };
 
 Board.prototype.rotateCardData = function(card) {
