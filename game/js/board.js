@@ -21,6 +21,7 @@ Board.prototype.initialCell = function() {
 
 Board.prototype.validationCard = function() {
   var that = this;
+  var correctDrop = false;
 
   $('.rotate-btn').click(function() {
     var angle = ($(this).prev().data('angle') + 90) || 90;
@@ -32,12 +33,22 @@ Board.prototype.validationCard = function() {
     var incorrectPositions = that.checkPosition($(this));
     if (incorrectPositions === 0) {
       that.createDroppables();
+      $(this).parent().droppable({
+        accept: ".card",
+        greedy: true,
+        activeClass: "cell-highlighted",
+        drop: function( event, ui) {
+          $(this).droppable("destroy");
+          $(this).removeClass("droppable");
+        }
+      });
       $('.context-btn').remove();
+      correctDrop = true;
     } else {
+      $(this).parent().addClass("droppable");
       $(this).siblings(".card").detach().appendTo($("#deck"));
       $('.context-btn').remove();
     }
-    console.log(incorrectPositions);
     incorrectPositions = 0;
   });
 };
@@ -48,10 +59,16 @@ Board.prototype.checkPosition = function(button) {
   var rowPosition = arrayIdParent[0];
   var columnPosition = arrayIdParent[1];
 
-  var topElement = $("#" + (rowPosition - 1) + "-" + columnPosition);
-  var rightElement = $("#" + rowPosition + "-" + (columnPosition + 1));
-  var bottomElement = $("#" + (rowPosition + 1) + "-" + columnPosition);
-  var leftElement = $("#" + rowPosition + "-" + (columnPosition - 1));
+  var rowPositionTop = rowPosition - 1;
+  var rowPositionBottom = Number(rowPosition) + 1;
+  var columnPositionRight = Number(columnPosition) + 1;
+  var columnPositionLeft = columnPosition - 1;
+
+  var rightElement = $("#" + rowPosition + "-" + columnPositionRight);
+  var leftElement = $("#" + rowPosition + "-" + columnPositionLeft);
+
+  var topElement = $("#" + rowPositionTop + "-" + columnPosition);
+  var bottomElement = $("#" + rowPositionBottom + "-" + columnPosition);
 
   var topElementData = topElement.children(".card").attr("data-bottom");
   var rightElementData = rightElement.children(".card").attr("data-left");
@@ -112,16 +129,17 @@ Board.prototype.acceptCard = function() {
   var rotateBtn = '<div class="capa1 context-btn rotate-btn"><div class="capa2"><div class="capa23"><div class="capa3"><div class="capa4"><span class="text rotate">Rotate</span><div class="capa5"></div></div></div></div></div></div>';
   var acceptBtn = '<div class="capa1 context-btn accept-btn"><div class="capa2"><div class="capa23"><div class="capa3"><div class="capa4"><span class="text rotate">Accept</span><div class="capa5"></div></div></div></div></div></div>';
 
-  var boardThis = this;
+  var that = this;
 
   $( ".droppable" ).droppable({
   accept: ".card",
+  greedy: true,
   activeClass: "cell-highlighted",
   drop: function( event, ui) {
     $(ui.draggable).addClass("blocked");
     $(ui.draggable).detach().appendTo($(this));
     $(this).append(rotateBtn).append(acceptBtn);
-    boardThis.validationCard();
+    that.validationCard();
   }
   });
 };
