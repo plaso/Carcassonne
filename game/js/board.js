@@ -34,10 +34,11 @@ Board.prototype.validationCard = function() {
       that.createDroppables();
       $('.context-btn').remove();
     } else {
-      $(this).siblings(".card").detach().prependTo($("#deck"));
+      $(this).siblings(".card").detach().appendTo($("#deck"));
       $('.context-btn').remove();
     }
     console.log(incorrectPositions);
+    incorrectPositions = 0;
   });
 };
 
