@@ -41,7 +41,7 @@ Score.prototype.finishGame = function() {
     $(".player").removeClass("active");
 
     var playBtn = '<div id="refresh" class="capa1 play-btn"><div class="capa2"><div class="capa23"><div class="capa3"><div class="capa4"><span class="text rotate">Play again</span><div class="capa5"></div></div></div></div></div></div>';
-    $("body").prepend("<div id='end-game'></div>");
+    $("body").prepend("<div id='end-game' class='game-screen'></div>");
     $("#end-game").append("<h2>And the winner is...</h2><div class='winner'></div>" + playBtn);
     $('#refresh').click(function() {
       location.reload();
