@@ -88,3 +88,9 @@ Card.prototype.drag = function() {
     helper: "clone",
   });
 };
+
+Card.prototype.remainingCards = function() {
+  var deckCards = $("#deck").children().length;
+
+  $("#remaining-cards-info span").text(deckCards);
+};

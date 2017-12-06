@@ -12,12 +12,20 @@ body {
 }
 
 .game-wrapper {
-  background-image: url(../img/pattern.svg);
-  background-repeat: repeat;
+  /*background-image: url(../img/pattern.svg);
+  background-repeat: repeat;*/
 
   height: 100%;
-  width: 3412px;
-  background-size: 100px;
+  width: 2412px;
+  /*background-size: 100px;*/
+
+  background-color: #0F4D84;
+  background-image:
+  repeating-linear-gradient(120deg, rgba(255,255,255,.1), transparent 1px, transparent 10000px),
+  repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 10000px),
+  linear-gradient(60deg,rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+  linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+  background-size: 180px 305px;
 }
 .information-wrapper {
   margin: 0 50px;
@@ -29,7 +37,7 @@ body {
 /* Textos */
 
 h1 {
-  z-index: 1000;
+  z-index: 10001;
   position: fixed;
   top: 0;
   left: 50%;
@@ -40,7 +48,7 @@ h1 {
   color: #ffbb2a;
   text-shadow: -1px 0 1px #582E00, 1px 0 1px #582E00, 0 -1px 1px #582E00, 0 4px 1px #582E00, -2px 4px 1px #582E00, 2px 3px 2px #582E00;
 }
-h2, h3, .player-score, .remaining-followers {
+h2, h3, .player-score, .remaining-cards, .winner {
   text-align: center;
   color: #ffffff;
   text-shadow: -1px 0 1px #582E00, 1px 0 1px #582E00, 0 -1px 1px #582E00, 0 4px 1px #582E00, -2px 4px 1px #582E00, 2px 3px 2px #582E00;
@@ -66,9 +74,9 @@ h3 {
 
 #board {
   margin-top: 120px;
-  width: 3012px;
+  width: 2012px;
   border: 6px solid #74480d;
-  height: 3012px;
+  height: 2012px;
   background: #dedede;
   background-image: url(../img/board-background.png);
   box-shadow: -1px 0 1px #582E00, 1px 0 1px #582E00, 0 -1px 1px #582E00, 0 4px 1px #582E00, -2px 4px 1px #582E00, 2px 3px 2px #582E00;
@@ -81,7 +89,6 @@ h3 {
   width: 100px;
   flex-basis: 100px;
   border: 1px solid #ffffff;
-  background: red;
 }
 .initial {
   background: yellow !important;
@@ -112,6 +119,7 @@ h3 {
   right: 0;
   top: 0;
   padding: 20px 20px 40px;
+  z-index: 10002;
 }
 .players-information {
   display: flex;
@@ -158,6 +166,11 @@ h3 {
   display: none;
 }
 
+.player h3, .player div {
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
 .player.active {
   animation-name: mark;
   animation-duration: 1.5s;
@@ -165,11 +178,71 @@ h3 {
   animation-iteration-count: infinite;
 }
 
+.player.active h3, .player.active div {
+  color: #ffbb2a;
+}
 
+/* Remaining cards */
 
+.remaining-cards {
+  position: fixed;
+  z-index: 1;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(calc(-50% - 150px));
+  text-align: center;
+  background: #e85756;
+  padding: 10px 20px;
+  font-size: 1.3rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+/* End of the game */
+
+#end-game {
+  z-index: 10000;
+  height: 100vh;
+  width: 100%;
+  background-color: #0F4D84;
+  background-image:
+  repeating-linear-gradient(120deg, rgba(255,255,255,.1), transparent 1px, transparent 10000px),
+  repeating-linear-gradient(60deg, rgba(255,255,255,.1), rgba(255,255,255,.1) 1px, transparent 1px, transparent 10000px),
+  linear-gradient(60deg,rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1)),
+  linear-gradient(120deg, rgba(0,0,0,.1) 25%, transparent 25%, transparent 75%, rgba(0,0,0,.1) 75%, rgba(0,0,0,.1));
+  background-size: 180px 305px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: fixed;
+  width: calc(100% - 300px);
+  opacity: 0;
+  animation-name: show;
+  animation-duration: .5s;
+  animation-delay: 0.5s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+.winner {
+  font-size: 4rem;
+}
+.play-btn {
+  transform: scale(.75) !important;
+  margin: 0 !important;
+}
+.play-btn span {
+  margin-left: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+}
 
 /*Botones*/
 
+
+/*Boton amarillo defecto*/
 
 .capa1 {
 	position: relative;
@@ -275,6 +348,54 @@ h3 {
              	2px 3px 2px #582E00;
 }
 
+/* verde */
+
+.accept-btn .capa2{
+	background:#09CC48;
+	-webkit-box-shadow: 0px 9px 0px #0D8F23;
+    -moz-box-shadow: 0px 9px 0px #0D8F23;
+    box-shadow: 0px 9px 0px #0D8F23;
+
+}
+
+.accept-btn .capa23{
+	-webkit-box-shadow: 0px -4px 5px 0px #60DA61;
+    -moz-box-shadow:    0px -4px 5px 0px #60DA61;
+	box-shadow:         0px -4px 5px 0px #60DA61;
+
+}
+
+.accept-btn .capa3{
+	background:#30ED45;
+	-webkit-box-shadow: 0px 4px 3px 0px #25D039;
+	-moz-box-shadow:    0px 4px 3px 0px #25D039;
+	box-shadow:         0px 4px 3px 0px #25D039;
+
+}
+
+.accept-btn .capa4{
+	background:#50FF65;
+
+}
+
+.accept-btn .capa5{
+	background:#D9FFFF;
+
+
+}
+
+.accept-btn .text{
+	text-shadow: -1px 0 1px #005F00,
+             	1px 0 1px #005F00,
+             	0 -1px 1px #005F00,
+             	0 4px 1px #005F00,
+             	-2px 4px 1px #005F00,
+             	2px 3px 2px #005F00;
+    color:#FEFEFE;
+}
+
+/**/
+
 .rotate-btn {
   left: -180px;
 }
@@ -295,4 +416,9 @@ h3 {
   60% {transform: scale(1.2);}
   80% {transform: scale(1);}
   100% {transform: scale(1);}
+}
+
+@keyframes show {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
 }

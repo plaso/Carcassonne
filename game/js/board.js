@@ -1,7 +1,7 @@
 function Board() {
   this.cellsArray = [];
-  this.cellsColumns = 30;
-  this.cellsRows = 30;
+  this.cellsColumns = 20;
+  this.cellsRows = 20;
 }
 
 Board.prototype.createCells = function() {
@@ -16,7 +16,7 @@ Board.prototype.createCells = function() {
 };
 
 Board.prototype.initialCell = function() {
-  $(".row-card:nth-child(15) .card-cell:nth-child(15)").addClass("initial droppable");
+  $(".row-card:nth-child(10) .card-cell:nth-child(10)").addClass("initial droppable");
 };
 
 Board.prototype.validationCard = function() {
@@ -43,6 +43,8 @@ Board.prototype.validationCard = function() {
       });
       $('.context-btn').remove();
       score.changeTurn();
+      score.finishGame();
+      card.remainingCards();
     } else {
       $(this).parent().addClass("droppable");
       $(this).siblings(".card").detach().appendTo($("#deck"));
@@ -102,16 +104,16 @@ Board.prototype.checkPosition = function(button) {
     }
   }
 
-  if (cardDataTop === topElementData && cardDataTop === "castle") {
+  if (cardDataTop === topElementData && cardDataTop === "castle" && incorrectPositions === 0) {
     score.scoreAcordingToTurn();
   }
-  if (cardDataRight === rightElementData && cardDataRight === "castle") {
+  if (cardDataRight === rightElementData && cardDataRight === "castle" && incorrectPositions === 0) {
     score.scoreAcordingToTurn();
   }
-  if (cardDataBottom === bottomElementData && cardDataBottom === "castle") {
+  if (cardDataBottom === bottomElementData && cardDataBottom === "castle" && incorrectPositions === 0) {
     score.scoreAcordingToTurn();
   }
-  if (cardDataLeft === leftElementData && cardDataLeft === "castle") {
+  if (cardDataLeft === leftElementData && cardDataLeft === "castle" && incorrectPositions === 0) {
     score.scoreAcordingToTurn();
   }
 

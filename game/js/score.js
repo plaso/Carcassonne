@@ -38,12 +38,24 @@ Score.prototype.scoreAcordingToTurn = function() {
 
 Score.prototype.finishGame = function() {
   if ($("#deck").children().length === 0) {
-    if (playerOneScore > playerTwoScore) {
+    $(".player").removeClass("active");
+
+    var playBtn = '<div id="refresh" class="capa1 play-btn"><div class="capa2"><div class="capa23"><div class="capa3"><div class="capa4"><span class="text rotate">Play again</span><div class="capa5"></div></div></div></div></div></div>';
+    $("body").prepend("<div id='end-game'></div>");
+    $("#end-game").append("<h2>And the winner is...</h2><div class='winner'></div>" + playBtn);
+    $('#refresh').click(function() {
+      location.reload();
+    });
+
+    if (this.playerOneScore > this.playerTwoScore) {
       console.log("Player 1 wins");
-    } else if (playerOneScore < playerTwoScore) {
+      $(".winner").text("Player 1");
+    } else if (this.playerOneScore < this.playerTwoScore) {
       console.log("Player 2 wins");
+      $(".winner").text("Player 2");
     } else {
       console.log("It's a tie");
+      $(".winner").text("Ops! It's a tie, you should play again");
     }
   }
 };
