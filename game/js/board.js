@@ -21,7 +21,6 @@ Board.prototype.initialCell = function() {
 
 Board.prototype.validationCard = function() {
   var that = this;
-  var correctDrop = false;
 
   $('.rotate-btn').click(function() {
     var angle = ($(this).prev().data('angle') + 90) || 90;
@@ -43,7 +42,7 @@ Board.prototype.validationCard = function() {
         }
       });
       $('.context-btn').remove();
-      correctDrop = true;
+      score.changeTurn();
     } else {
       $(this).parent().addClass("droppable");
       $(this).siblings(".card").detach().appendTo($("#deck"));
@@ -101,6 +100,19 @@ Board.prototype.checkPosition = function(button) {
     if (cardDataLeft != leftElementData) {
       incorrectPositions++;
     }
+  }
+
+  if (cardDataTop === topElementData && cardDataTop === "castle") {
+    score.scoreAcordingToTurn();
+  }
+  if (cardDataRight === rightElementData && cardDataRight === "castle") {
+    score.scoreAcordingToTurn();
+  }
+  if (cardDataBottom === bottomElementData && cardDataBottom === "castle") {
+    score.scoreAcordingToTurn();
+  }
+  if (cardDataLeft === leftElementData && cardDataLeft === "castle") {
+    score.scoreAcordingToTurn();
   }
 
   return incorrectPositions;

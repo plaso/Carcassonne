@@ -1,4 +1,5 @@
 var card = new Card();
+var score = new Score();
 var board = new Board();
 
 $( document ).ready(function() {
@@ -8,4 +9,5 @@ $( document ).ready(function() {
   card.selectCard();
   board.acceptCard();
   card.drag();
+  score.changeTurn();
 });

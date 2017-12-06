@@ -158,7 +158,12 @@ h3 {
   display: none;
 }
 
-
+.player.active {
+  animation-name: mark;
+  animation-duration: 1.5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
 
 
 
@@ -277,4 +282,17 @@ h3 {
 .accept-btn {
   top: -180px;
   left: -20px;
+}
+
+
+
+/* Animation */
+
+@keyframes mark {
+  0% {transform: scale(1);}
+  20% {transform: scale(1.2);}
+  40% {transform: scale(1);}
+  60% {transform: scale(1.2);}
+  80% {transform: scale(1);}
+  100% {transform: scale(1);}
 }
