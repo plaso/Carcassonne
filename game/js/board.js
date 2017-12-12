@@ -30,6 +30,9 @@ Board.prototype.validationCard = function() {
   });
   $('.accept-btn').click(function() {
     var incorrectPositions = that.checkPosition($(this));
+
+    $("#deck").removeClass("blocked-deck");
+
     if (incorrectPositions === 0) {
       that.createDroppables();
       $(this).parent().droppable({
@@ -154,6 +157,7 @@ Board.prototype.acceptCard = function() {
     $(ui.draggable).detach().appendTo($(this));
     $(this).append(rotateBtn).append(acceptBtn);
     that.validationCard();
+    $("#deck").addClass("blocked-deck");
   }
   });
 };

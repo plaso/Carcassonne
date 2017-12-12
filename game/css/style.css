@@ -154,6 +154,10 @@ h3 {
   height: 98px;
 }
 
+#deck.blocked-deck .card {
+  pointer-events: none !important;
+}
+
 .deck-container h3 {
   margin-bottom: 1.5rem;
 }
