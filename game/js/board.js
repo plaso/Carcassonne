@@ -52,6 +52,10 @@ Board.prototype.validationCard = function() {
       $(this).parent().addClass("droppable");
       $(this).siblings(".card").detach().appendTo($("#deck"));
       $('.context-btn').remove();
+      $(".game-wrapper").append("<div class='wrong-position'>Wrong position</div>");
+      setTimeout(function() {
+        $(".wrong-position").remove();
+      }, 2000);
     }
     incorrectPositions = 0;
   });
